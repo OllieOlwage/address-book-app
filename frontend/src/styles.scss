@@ -1,4 +1,53 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'styles/adapt-it-tokens';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--fg-2);
+  background: var(--bg-1);
+  -webkit-font-smoothing: antialiased;
+}
+
+// Headings
+h1, h2, h3, h4, h5 {
+  color: var(--fg-1);
+  letter-spacing: -0.02em;
+  line-height: 1.0;
+  margin: 0 0 var(--sp-4);
+}
+
+// Links
+a {
+  color: var(--fg-link);
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+// Override Material primary colour
+.mat-mdc-raised-button.mat-primary {
+  background-color: var(--ai-blue) !important;
+}
+.mat-toolbar.mat-primary {
+  background-color: var(--ai-dark-blue) !important;
+}
+.mdc-text-field--focused .mdc-floating-label {
+  color: var(--ai-blue) !important;
+}
+
+.mat-mdc-form-field {
+  .mdc-text-field {
+    border-radius: var(--radius-sm) !important;
+  }
+
+  .mdc-text-field--focused {
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: var(--ai-blue) !important;
+    }
+  }
+}

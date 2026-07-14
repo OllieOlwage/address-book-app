@@ -1,5 +1,37 @@
+.ai-toolbar {
+  background-color: var(--ai-dark-blue);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 24px;
+}
+
+.toolbar-title {
+  font-weight: 700;
+  font-size: 18px;
+}
+
 .content {
   max-width: 960px;
   margin: 24px auto;
   padding: 0 16px;
+}
+
+// Primary button override
+.mat-mdc-raised-button.mat-primary {
+  background-color: var(--ai-blue);
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: none;  // Sentence case, NOT uppercase
+
+  &:hover {
+    filter: brightness(0.93);
+  }
+}
+
+// Warn/Delete button
+.mat-mdc-icon-button.mat-warn {
+  color: var(--ai-red);
 }
