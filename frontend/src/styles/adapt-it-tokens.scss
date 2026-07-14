@@ -12,35 +12,35 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url('fonts/MyriadPro-Light.otf') format('opentype');
+  src: url('/assets/fonts/MyriadPro-Light.otf') format('opentype');
 }
 @font-face {
   font-family: 'Myriad Pro';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('fonts/MyriadPro-Regular.otf') format('opentype');
+  src: url('/assets/fonts/MyriadPro-Regular.otf') format('opentype');
 }
 @font-face {
   font-family: 'Myriad Pro';
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: url('fonts/MyriadPro-It.otf') format('opentype');
+  src: url('/assets/fonts/MyriadPro-It.otf') format('opentype');
 }
 @font-face {
   font-family: 'Myriad Pro';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('fonts/MyriadPro-Bold.otf') format('opentype');
+  src: url('/assets/fonts/MyriadPro-Bold.otf') format('opentype');
 }
 @font-face {
   font-family: 'Myriad Pro';
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url('fonts/MyriadPro-Black.otf') format('opentype');
+  src: url('/assets/fonts/MyriadPro-Black.otf') format('opentype');
 }
 
 :root {
