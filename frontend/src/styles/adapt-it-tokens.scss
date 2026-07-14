@@ -1,0 +1,184 @@
+/* ============================================================
+   Adapt IT — Colors & Type tokens
+   Sourced from the Adapt IT Brand Identity Guidelines V2024.2
+   ============================================================ */
+
+/* ---- Type: Myriad Pro is the Adapt IT brand primary font.
+        Licensed files are shipped in /fonts. Calibri and Open Sans
+        remain in the stack as digital fallbacks for environments
+        where Myriad Pro can't be served. */
+@font-face {
+  font-family: 'Myriad Pro';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('fonts/MyriadPro-Light.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Myriad Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/MyriadPro-Regular.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Myriad Pro';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/MyriadPro-It.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Myriad Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('fonts/MyriadPro-Bold.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Myriad Pro';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('fonts/MyriadPro-Black.otf') format('opentype');
+}
+
+:root {
+  /* ======== PRIMARY PALETTE (Brand Guide §26) ======== */
+  --ai-blue:       #00A1ED;   /* Adapt IT Blue — wordmark, links, primary CTA */
+  --ai-red:        #E82727;   /* Adapt IT Red — Infinity "A", accent only */
+  --ai-white:      #FFFFFF;
+  --ai-cool-grey:  #4C5056;   /* Adapt IT Cool Grey — primary body copy */
+  --ai-cool-grey-80: #5C616A; /* approximated 80% */
+  --ai-cool-grey-60: #A2A5AA; /* 60% tint per guide */
+  --ai-cool-grey-40: #C9CACD; /* 40% tint */
+  --ai-cool-grey-20: #ECECED; /* 20% tint — borders, fills */
+  --ai-cool-grey-10: #F4F5F5; /* 10% tint — page tints */
+  --ai-black:       #000000;  /* finance/legal body copy only */
+
+  /* ======== SECONDARY PALETTE (Brand Guide §27) ======== */
+  --ai-navy:       #002971;   /* Adapt IT Navy */
+  --ai-navy-40:    #7681B4;
+  --ai-dark-blue:  #003242;   /* Adapt IT Dark Blue — hero backgrounds */
+  --ai-dark-blue-40: #6C8A9B;
+  --ai-mid-blue:   #006690;   /* Adapt IT Mid Blue */
+  --ai-mid-blue-40:#79ABC7;
+  --ai-teal:       #009FB0;   /* Adapt IT Teal */
+  --ai-teal-40:    #85CFD9;
+  --ai-mint:       #65C7DE;   /* Adapt IT Mint */
+  --ai-mint-40:    #BEE6EF;
+
+  /* ======== TERTIARY PALETTE (Brand Guide §28) ======== */
+  --ai-honey:      #FF9A00;
+  --ai-fuchsia:    #D80076;
+  --ai-umber:      #EA3217;
+  --ai-blush:      #C00042;
+  --ai-citrus:     #A4C425;
+  --ai-violet:     #3B2381;
+
+  /* ======== SEMANTIC ROLES ======== */
+  --fg-1:          var(--ai-dark-blue);   /* primary headings */
+  --fg-2:          var(--ai-cool-grey);   /* body */
+  --fg-3:          var(--ai-cool-grey-60);/* muted */
+  --fg-invert:     var(--ai-white);
+  --fg-link:       var(--ai-blue);
+  --fg-accent:     var(--ai-red);
+
+  --bg-1:          var(--ai-white);
+  --bg-2:          var(--ai-cool-grey-10);
+  --bg-3:          var(--ai-cool-grey-20);
+  --bg-hero:       var(--ai-dark-blue);
+  --bg-hero-alt:   var(--ai-navy);
+
+  --border:        var(--ai-cool-grey-20);
+  --border-strong: var(--ai-cool-grey-40);
+
+  /* ======== TYPOGRAPHY ======== */
+  --font-sans:     'Myriad Pro', 'Calibri', 'Open Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-mono:     ui-monospace, 'Cascadia Mono', 'SF Mono', Menlo, monospace;
+
+  /* Font ratios from a 20px (website) base em — Brand Guide §37 */
+  --fs-base:   20px;   /* body */
+  --fs-sub:    16px;   /* 0.8em — sub copy, captions */
+  --fs-h5:     20px;   /* 1.0em bold */
+  --fs-h4:     24px;   /* 1.2em */
+  --fs-h3:     30px;   /* 1.5em */
+  --fs-h2:     40px;   /* 2.0em */
+  --fs-h1:     80px;   /* 4.0em — reserved for hero */
+  --fs-h1-sm:  56px;   /* pragmatic web H1 */
+
+  --lh-heading: 1.0;   /* "Leading: Equal to Font Size" per guide */
+  --lh-body:    1.35;  /* "Font Size + 4pts" at 20 ≈ 1.35 */
+  --tracking-heading: -0.02em; /* "Tracking: -10" */
+
+  /* ======== SPACING (8-pt grid) ======== */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px;
+  --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 96px; --sp-10: 128px;
+
+  /* ======== RADIUS ======== */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  /* ======== ELEVATION — soft, low-contrast (enterprise feel) ======== */
+  --shadow-1: 0 1px 2px rgba(0, 50, 66, 0.06);
+  --shadow-2: 0 2px 8px rgba(0, 50, 66, 0.08), 0 1px 2px rgba(0, 50, 66, 0.04);
+  --shadow-3: 0 8px 24px rgba(0, 50, 66, 0.10), 0 2px 6px rgba(0, 50, 66, 0.05);
+  --shadow-focus: 0 0 0 3px rgba(0, 161, 237, 0.30);
+
+  /* ======== GRADIENTS (Brand Guide §29 — radial pairings) ======== */
+  --grad-blue-1:   radial-gradient(120% 120% at 30% 30%, var(--ai-mint)     0%, var(--ai-blue)      100%);
+  --grad-blue-2:   radial-gradient(120% 120% at 30% 30%, var(--ai-blue)     0%, var(--ai-dark-blue) 100%);
+  --grad-blue-3:   radial-gradient(120% 120% at 30% 30%, var(--ai-mid-blue) 0%, var(--ai-navy)      100%);
+  --grad-honey-blush:   radial-gradient(120% 120% at 30% 30%, var(--ai-honey) 0%, var(--ai-blush)   100%);
+  --grad-honey-umber:   radial-gradient(120% 120% at 30% 30%, var(--ai-honey) 0%, var(--ai-umber)   100%);
+  --grad-honey-fuchsia: radial-gradient(120% 120% at 30% 30%, var(--ai-honey) 0%, var(--ai-fuchsia) 100%);
+  --grad-violet-navy:   radial-gradient(120% 120% at 30% 30%, var(--ai-violet)0%, var(--ai-navy)    100%);
+  --grad-fuchsia-violet:radial-gradient(120% 120% at 30% 30%, var(--ai-fuchsia)0%,var(--ai-violet)  100%);
+  --grad-citrus-teal:   radial-gradient(120% 120% at 30% 30%, var(--ai-citrus)0%, var(--ai-teal)    100%);
+}
+
+/* ======== ELEMENT STYLES (Brand Guide §37-38) ======== */
+html { font-size: var(--fs-base); }
+body {
+  font-family: var(--font-sans);
+  color: var(--fg-2);
+  line-height: var(--lh-body);
+  background: var(--bg-1);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, h4, h5 {
+  color: var(--fg-1);
+  letter-spacing: var(--tracking-heading);
+  line-height: var(--lh-heading);
+  margin: 0 0 var(--sp-4);
+}
+h1 { font-size: var(--fs-h1-sm); font-weight: 700; }
+h2 { font-size: var(--fs-h2);    font-weight: 300; } /* H2 allows Light or Bold per guide */
+h3 { font-size: var(--fs-h3);    font-weight: 700; line-height: 1.2; }
+h4 { font-size: var(--fs-h4);    font-weight: 700; line-height: 1.2; }
+h5 { font-size: var(--fs-h5);    font-weight: 700; text-align: left; }
+p  { margin: 0 0 var(--sp-4); }
+small, .sub-copy { font-size: var(--fs-sub); }
+
+a  { color: var(--fg-link); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+code, pre { font-family: var(--font-mono); font-size: 0.9em; }
+
+/* Hero type treatment for the classic "big statement" Adapt IT layout */
+.ai-display {
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--fg-1);
+}
+.ai-tagline {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+}
