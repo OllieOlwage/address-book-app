@@ -1,0 +1,18 @@
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  padding: 48px 0;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
