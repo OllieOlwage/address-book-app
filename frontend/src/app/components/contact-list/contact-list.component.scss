@@ -54,15 +54,32 @@
 }
 
 .contact-card {
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 8px;
-  padding: 16px;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+  padding: var(--sp-4);
+  transition: box-shadow 0.2s cubic-bezier(.2,.7,.2,1), transform 0.2s;
+
+  &:hover {
+    box-shadow: var(--shadow-2);
+    transform: translateY(-1px);
+  }
 
   .card-name {
-    font-weight: 500;
+    font-weight: 700;
     font-size: 16px;
+    color: var(--fg-1);
     margin-bottom: 8px;
   }
+
+  .card-detail {
+    color: var(--fg-2);
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+}
+
 
   .card-detail {
     color: rgba(0, 0, 0, 0.6);
