@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Training Invitation — AI-Powered Development</title>
+<style>
+  @font-face { font-family: 'Myriad Pro'; font-weight: 300; src: url('../design-system/fonts/MyriadPro-Light.otf') format('opentype'); }
+  @font-face { font-family: 'Myriad Pro'; font-weight: 400; src: url('../design-system/fonts/MyriadPro-Regular.otf') format('opentype'); }
+  @font-face { font-family: 'Myriad Pro'; font-weight: 700; src: url('../design-system/fonts/MyriadPro-Bold.otf') format('opentype'); }
+  @font-face { font-family: 'Myriad Pro'; font-weight: 900; src: url('../design-system/fonts/MyriadPro-Black.otf') format('opentype'); }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Myriad Pro', Calibri, 'Open Sans', sans-serif;
+    color: #4C5056;
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @page { size: A4; margin: 0; }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: #003242;
+    color: #fff;
+    padding: 48px 40px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: 'A';
+    position: absolute;
+    right: -40px;
+    top: -30px;
+    font-size: 280px;
+    font-weight: 900;
+    opacity: 0.06;
+    color: #65C7DE;
+    line-height: 1;
+  }
+
+  .hero-logo {
+    height: 34px;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 span {
+    color: #00A1ED;
+  }
+
+  .hero .subtitle {
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.8);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Content */
+  .content {
+    padding: 32px 40px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .intro {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #003242;
+    font-weight: 400;
+  }
+
+  .intro strong {
+    color: #00A1ED;
+  }
+
+  /* What You'll Experience */
+  .section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #00A1ED;
+    margin-bottom: 10px;
+  }
+
+  .highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .highlight-card {
+    background: #F4F5F5;
+    border-radius: 6px;
+    padding: 16px 18px;
+    border-left: 3px solid #00A1ED;
+  }
+
+  .highlight-card:nth-child(2) { border-left-color: #009FB0; }
+  .highlight-card:nth-child(3) { border-left-color: #006690; }
+  .highlight-card:nth-child(4) { border-left-color: #002971; }
+
+  .highlight-card h3 {
+    font-size: 13px;
+    font-weight: 700;
+    color: #003242;
+    margin-bottom: 4px;
+  }
+
+  .highlight-card p {
+    font-size: 11px;
+    color: #4C5056;
+    line-height: 1.4;
+  }
+
+  /* Stats */
+  .stats {
+    display: flex;
+    gap: 28px;
+    padding: 20px 0;
+    border-top: 1px solid #ECECED;
+    border-bottom: 1px solid #ECECED;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat .number {
+    font-size: 30px;
+    font-weight: 900;
+    color: #00A1ED;
+    line-height: 1;
+  }
+
+  .stat .label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #4C5056;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+  }
+
+  /* Details */
+  .details {
+    display: flex;
+    gap: 28px;
+  }
+
+  .detail-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .detail-icon {
+    width: 28px;
+    height: 28px;
+    background: #003242;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .detail-icon svg {
+    width: 14px;
+    height: 14px;
+    stroke: #fff;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .detail-text .label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #A2A5AA;
+  }
+
+  .detail-text .value {
+    font-size: 13px;
+    font-weight: 700;
+    color: #003242;
+  }
+
+  /* App Preview */
+  .preview {
+    padding: 0 40px;
+  }
+
+  .preview img {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #ECECED;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Footer */
+  .footer {
+    padding: 22px 40px;
+    background: #F4F5F5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer .tagline {
+    font-size: 14px;
+    font-weight: 700;
+    color: #003242;
+  }
+
+  .footer .cta {
+    background: #00A1ED;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  @media print {
+    body { background: none; }
+    .page { width: 100%; height: 100vh; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hero">
+    <img src="../design-system/assets/logos/adapt-it-logo-stacked-white.png" alt="Adapt IT" class="hero-logo">
+    <h1>Build a Full App<br>in <span>One Session.</span><br>With AI.</h1>
+    <div class="subtitle">Developer Training: AI-Powered Development with Claude Code</div>
+  </div>
+
+  <div class="content">
+    <p class="intro">
+      Watch an AI build a <strong>production-ready full-stack application</strong> from a single ticket.
+      Then do it yourself. From zero to deployed in one session — backend, frontend, tests, PR, and branded UI.
+    </p>
+
+    <div>
+      <div class="section-title">What you'll experience</div>
+      <div class="highlights">
+        <div class="highlight-card">
+          <h3>Ticket to PR in minutes</h3>
+          <p>A structured workflow turns a GitHub issue into working code, tests, and a pull request — automatically.</p>
+        </div>
+        <div class="highlight-card">
+          <h3>Full-stack, no shortcuts</h3>
+          <p>REST API, database, Angular frontend, validation, responsive design. Real code, not a demo toy.</p>
+        </div>
+        <div class="highlight-card">
+          <h3>Your brand, applied instantly</h3>
+          <p>See the Adapt IT Design System transformed into a live UI with one command.</p>
+        </div>
+        <div class="highlight-card">
+          <h3>You drive, AI assists</h3>
+          <p>Learn to prompt, review, approve, and ship. The AI proposes — you decide.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="number">27</div>
+        <div class="label">Tests generated</div>
+      </div>
+      <div class="stat">
+        <div class="number">44</div>
+        <div class="label">Files created</div>
+      </div>
+      <div class="stat">
+        <div class="number">1</div>
+        <div class="label">Session</div>
+      </div>
+      <div class="stat">
+        <div class="number">0</div>
+        <div class="label">Lines typed by hand</div>
+      </div>
+    </div>
+
+    <div class="details">
+      <div class="detail-item">
+        <div class="detail-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div class="detail-text">
+          <div class="label">Date</div>
+          <div class="value">TBC</div>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="detail-text">
+          <div class="label">Duration</div>
+          <div class="value">2-3 hours</div>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="detail-text">
+          <div class="label">Who</div>
+          <div class="value">All developers</div>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="detail-text">
+          <div class="label">Bring</div>
+          <div class="value">Your laptop</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview">
+    <img src="contacts-preview.png" alt="Address Book App Preview">
+  </div>
+
+  <div class="footer">
+    <span class="tagline">Achieve more.</span>
+    <a href="#" class="cta">RSVP to your team lead</a>
+  </div>
+</div>
+</body>
+</html>

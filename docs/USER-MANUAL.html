@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Address Book App — End-User Manual</title>
+<style>
+  @font-face { font-family: 'Myriad Pro'; font-weight: 300; src: url('../design-system/fonts/MyriadPro-Light.otf') format('opentype'); }
+  @font-face { font-family: 'Myriad Pro'; font-weight: 400; src: url('../design-system/fonts/MyriadPro-Regular.otf') format('opentype'); }
+  @font-face { font-family: 'Myriad Pro'; font-weight: 700; src: url('../design-system/fonts/MyriadPro-Bold.otf') format('opentype'); }
+  @font-face { font-family: 'Myriad Pro'; font-weight: 900; src: url('../design-system/fonts/MyriadPro-Black.otf') format('opentype'); }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Myriad Pro', Calibri, 'Open Sans', sans-serif;
+    color: #4C5056;
+    background: #fff;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @page {
+    size: A4;
+    margin: 20mm 18mm;
+  }
+
+  @media print {
+    .page-break { page-break-before: always; }
+    body { font-size: 11pt; }
+  }
+
+  /* Cover Page */
+  .cover {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #003242;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 161, 237, 0.15) 0%, transparent 70%);
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: -150px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(101, 199, 222, 0.1) 0%, transparent 70%);
+  }
+
+  .cover-logo {
+    height: 60px;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover h1 {
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover .doc-type {
+    font-size: 20px;
+    font-weight: 300;
+    color: #65C7DE;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover .version-info {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Main Content */
+  .content {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 40px;
+  }
+
+  /* Table of Contents */
+  .toc {
+    margin-bottom: 48px;
+  }
+
+  .toc h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #003242;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #00A1ED;
+  }
+
+  .toc ol {
+    list-style: none;
+    counter-reset: toc-counter;
+  }
+
+  .toc ol li {
+    counter-increment: toc-counter;
+    padding: 8px 0;
+    border-bottom: 1px solid #ECECED;
+    font-size: 15px;
+  }
+
+  .toc ol li::before {
+    content: counter(toc-counter) ".";
+    font-weight: 700;
+    color: #00A1ED;
+    margin-right: 10px;
+  }
+
+  .toc ol li a {
+    color: #003242;
+    text-decoration: none;
+  }
+
+  .toc ol li a:hover {
+    color: #00A1ED;
+  }
+
+  /* Section Headings */
+  h2.section-heading {
+    font-size: 26px;
+    font-weight: 700;
+    color: #003242;
+    margin-top: 48px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #00A1ED;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #003242;
+    margin-top: 28px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin-bottom: 14px;
+    font-size: 14px;
+  }
+
+  /* Numbered Steps */
+  .steps {
+    counter-reset: step-counter;
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 24px;
+  }
+
+  .steps li {
+    counter-increment: step-counter;
+    position: relative;
+    padding: 12px 16px 12px 52px;
+    margin-bottom: 10px;
+    background: #F4F5F5;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .steps li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 26px;
+    height: 26px;
+    background: #00A1ED;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Info Boxes */
+  .info-box {
+    padding: 14px 18px;
+    border-radius: 6px;
+    margin: 16px 0;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .info-box.tip {
+    background: #E8F8FD;
+    border-left: 3px solid #00A1ED;
+  }
+
+  .info-box.warning {
+    background: #FFF8E6;
+    border-left: 3px solid #F5A623;
+  }
+
+  .info-box .label {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
+  .info-box.tip .label { color: #00A1ED; }
+  .info-box.warning .label { color: #F5A623; }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 13px;
+  }
+
+  table th {
+    background: #003242;
+    color: #fff;
+    font-weight: 700;
+    text-align: left;
+    padding: 10px 14px;
+  }
+
+  table th:first-child { border-radius: 4px 0 0 0; }
+  table th:last-child { border-radius: 0 4px 0 0; }
+
+  table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #ECECED;
+  }
+
+  table tr:nth-child(even) td {
+    background: #F9F9FA;
+  }
+
+  /* Screenshot container */
+  .screenshot {
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  .screenshot img {
+    max-width: 100%;
+    border-radius: 6px;
+    border: 1px solid #ECECED;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .screenshot .caption {
+    font-size: 12px;
+    color: #A2A5AA;
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* Field descriptions */
+  .field-list {
+    margin: 12px 0 20px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .field-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ECECED;
+    font-size: 14px;
+  }
+
+  .field-list li strong {
+    color: #003242;
+  }
+
+  .field-list li .rules {
+    color: #A2A5AA;
+    font-size: 12px;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* Footer */
+  .doc-footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #ECECED;
+    text-align: center;
+    font-size: 12px;
+    color: #A2A5AA;
+  }
+
+  /* Keyboard shortcut styling */
+  kbd {
+    display: inline-block;
+    padding: 2px 6px;
+    font-family: inherit;
+    font-size: 12px;
+    background: #F4F5F5;
+    border: 1px solid #ECECED;
+    border-radius: 3px;
+    color: #003242;
+  }
+</style>
+</head>
+<body>
+
+<!-- Cover Page -->
+<div class="cover">
+  <img src="../design-system/assets/logos/adapt-it-logo-stacked-white.png" alt="Adapt IT" class="cover-logo">
+  <h1>Address Book</h1>
+  <div class="doc-type">End-User Manual</div>
+  <div class="version-info">Version 1.0 &middot; July 2026</div>
+</div>
+
+<!-- Content -->
+<div class="content">
+
+  <!-- Table of Contents -->
+  <div class="toc page-break">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#getting-started">Getting Started</a></li>
+      <li><a href="#viewing-contacts">Viewing Contacts</a></li>
+      <li><a href="#searching">Searching and Filtering</a></li>
+      <li><a href="#adding">Adding a New Contact</a></li>
+      <li><a href="#editing">Editing a Contact</a></li>
+      <li><a href="#deleting">Deleting a Contact</a></li>
+      <li><a href="#mobile">Using on Mobile Devices</a></li>
+      <li><a href="#validation">Field Validation Rules</a></li>
+      <li><a href="#troubleshooting">Troubleshooting</a></li>
+    </ol>
+  </div>
+
+  <!-- 1. Overview -->
+  <h2 class="section-heading" id="overview">1. Overview</h2>
+  <p>The Address Book application allows you to store, search, edit, and manage your contacts in one place. It provides a clean, responsive interface that works on desktop computers and mobile devices.</p>
+
+  <table>
+    <tr>
+      <th>Feature</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>View contacts</td>
+      <td>See all contacts in a sortable table (desktop) or card view (mobile)</td>
+    </tr>
+    <tr>
+      <td>Search</td>
+      <td>Instantly filter contacts by name or email</td>
+    </tr>
+    <tr>
+      <td>Add contacts</td>
+      <td>Create new contacts with name, cell number, and email</td>
+    </tr>
+    <tr>
+      <td>Edit contacts</td>
+      <td>Update any contact's details</td>
+    </tr>
+    <tr>
+      <td>Delete contacts</td>
+      <td>Remove contacts with a confirmation prompt</td>
+    </tr>
+  </table>
+
+  <!-- 2. Getting Started -->
+  <h2 class="section-heading" id="getting-started">2. Getting Started</h2>
+  <p>Open your web browser and navigate to the application URL provided by your administrator. No login is required.</p>
+
+  <div class="info-box tip">
+    <div class="label">Supported Browsers</div>
+    Google Chrome, Microsoft Edge, Mozilla Firefox, and Safari (latest versions).
+  </div>
+
+  <p>When the application loads, you will see the main Contacts screen with the Adapt IT branded toolbar at the top.</p>
+
+  <div class="screenshot">
+    <img src="contacts-preview.png" alt="Address Book main screen showing the contacts list">
+    <div class="caption">Figure 1: The main Contacts screen</div>
+  </div>
+
+  <!-- 3. Viewing Contacts -->
+  <h2 class="section-heading page-break" id="viewing-contacts">3. Viewing Contacts</h2>
+  <p>The main screen displays all your contacts in a table with the following columns:</p>
+
+  <table>
+    <tr>
+      <th>Column</th>
+      <th>Shows</th>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td>First name and last name combined</td>
+    </tr>
+    <tr>
+      <td>Cell Number</td>
+      <td>The contact's mobile phone number</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>The contact's email address</td>
+    </tr>
+    <tr>
+      <td>Actions</td>
+      <td>Edit (pencil icon) and Delete (bin icon) buttons</td>
+    </tr>
+  </table>
+
+  <p>Contacts are listed with the most recently added at the top.</p>
+
+  <div class="info-box tip">
+    <div class="label">Empty State</div>
+    If no contacts exist yet, you will see the message: "No contacts yet. Add your first contact!"
+  </div>
+
+  <!-- 4. Searching -->
+  <h2 class="section-heading" id="searching">4. Searching and Filtering</h2>
+  <p>Use the search bar at the top of the contacts list to find specific contacts quickly.</p>
+
+  <ol class="steps">
+    <li>Click on the <strong>Search contacts</strong> field.</li>
+    <li>Type any part of a contact's name or email address.</li>
+    <li>The list filters instantly as you type — no need to press Enter.</li>
+    <li>Clear the search field to show all contacts again.</li>
+  </ol>
+
+  <div class="info-box tip">
+    <div class="label">Search Scope</div>
+    The search matches against first name, last name, and email address. It is not case-sensitive — searching for "jane" will find "Jane".
+  </div>
+
+  <!-- 5. Adding a Contact -->
+  <h2 class="section-heading" id="adding">5. Adding a New Contact</h2>
+
+  <ol class="steps">
+    <li>Click the <strong>+ Add Contact</strong> button in the top-right corner of the contacts screen.</li>
+    <li>Fill in all four fields: First Name, Last Name, Cell Number, and Email.</li>
+    <li>Click the <strong>Create</strong> button to save the new contact.</li>
+    <li>You will be returned to the contacts list, where your new contact will appear.</li>
+  </ol>
+
+  <div class="info-box tip">
+    <div class="label">Cell Number Format</div>
+    Enter the number with or without a country code. Examples: <strong>+27 82 123 4567</strong>, <strong>082-123-4567</strong>, or <strong>(011) 555 1234</strong>.
+  </div>
+
+  <div class="info-box warning">
+    <div class="label">Required Fields</div>
+    All four fields are required. The Create button will remain disabled if any field is empty or contains invalid data.
+  </div>
+
+  <h3>Cancelling</h3>
+  <p>Click <strong>Cancel</strong> at any time to return to the contacts list without saving.</p>
+
+  <!-- 6. Editing a Contact -->
+  <h2 class="section-heading" id="editing">6. Editing a Contact</h2>
+
+  <ol class="steps">
+    <li>Find the contact you want to edit in the contacts list.</li>
+    <li>Click the <strong>pencil icon</strong> in the Actions column for that contact.</li>
+    <li>The form will open with the contact's current details pre-filled.</li>
+    <li>Change any fields as needed.</li>
+    <li>Click <strong>Update</strong> to save your changes.</li>
+  </ol>
+
+  <p>You will be returned to the contacts list with the updated details reflected immediately.</p>
+
+  <!-- 7. Deleting a Contact -->
+  <h2 class="section-heading" id="deleting">7. Deleting a Contact</h2>
+
+  <ol class="steps">
+    <li>Find the contact you want to remove in the contacts list.</li>
+    <li>Click the <strong>bin icon</strong> in the Actions column for that contact.</li>
+    <li>A confirmation dialog will appear asking: "Are you sure you want to delete <em>[Name]</em>?"</li>
+    <li>Click <strong>Delete</strong> to confirm, or <strong>Cancel</strong> to keep the contact.</li>
+  </ol>
+
+  <div class="info-box warning">
+    <div class="label">Permanent Action</div>
+    Deleting a contact cannot be undone. Make sure you have selected the correct contact before confirming.
+  </div>
+
+  <!-- 8. Mobile -->
+  <h2 class="section-heading page-break" id="mobile">8. Using on Mobile Devices</h2>
+  <p>The application is fully responsive. On screens smaller than 768px wide (phones and small tablets), the table view is replaced with a card layout.</p>
+
+  <p>Each contact card displays:</p>
+  <ul class="field-list">
+    <li><strong>Name</strong> — shown prominently at the top of the card</li>
+    <li><strong>Cell Number</strong> — displayed below the name</li>
+    <li><strong>Email</strong> — displayed below the cell number</li>
+    <li><strong>Actions</strong> — Edit and Delete buttons at the bottom-right of the card</li>
+  </ul>
+
+  <p>All features (add, edit, delete, search) work identically on mobile — only the visual layout changes.</p>
+
+  <!-- 9. Validation -->
+  <h2 class="section-heading" id="validation">9. Field Validation Rules</h2>
+  <p>The application validates your input to ensure data quality. Here are the rules for each field:</p>
+
+  <table>
+    <tr>
+      <th>Field</th>
+      <th>Rules</th>
+      <th>Example</th>
+    </tr>
+    <tr>
+      <td>First Name</td>
+      <td>Required. Maximum 50 characters.</td>
+      <td>Jane</td>
+    </tr>
+    <tr>
+      <td>Last Name</td>
+      <td>Required. Maximum 50 characters.</td>
+      <td>Smith</td>
+    </tr>
+    <tr>
+      <td>Cell Number</td>
+      <td>Required. 7-15 digits. May include +, spaces, dashes, and brackets.</td>
+      <td>+27 82 555 1234</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>Required. Must be a valid email format. Maximum 254 characters.</td>
+      <td>jane@example.com</td>
+    </tr>
+  </table>
+
+  <p>If a field contains invalid data, a red error message will appear below it explaining what needs to be corrected.</p>
+
+  <!-- 10. Troubleshooting -->
+  <h2 class="section-heading" id="troubleshooting">10. Troubleshooting</h2>
+
+  <table>
+    <tr>
+      <th>Problem</th>
+      <th>Solution</th>
+    </tr>
+    <tr>
+      <td>Page shows a loading spinner that never stops</td>
+      <td>The backend server may be down. Contact your administrator.</td>
+    </tr>
+    <tr>
+      <td>"No contacts match your search" but I know the contact exists</td>
+      <td>Clear the search field and try again. Search only matches name and email, not cell number.</td>
+    </tr>
+    <tr>
+      <td>I cannot click the Create/Update button</td>
+      <td>One or more fields have validation errors. Check for red error messages below each field.</td>
+    </tr>
+    <tr>
+      <td>Changes are not appearing after I save</td>
+      <td>Try refreshing the page with <kbd>Ctrl</kbd> + <kbd>R</kbd> (or <kbd>Cmd</kbd> + <kbd>R</kbd> on Mac).</td>
+    </tr>
+    <tr>
+      <td>The app looks broken or unstyled</td>
+      <td>Clear your browser cache: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Delete</kbd>, then reload.</td>
+    </tr>
+  </table>
+
+  <div class="info-box tip">
+    <div class="label">Need More Help?</div>
+    Contact your system administrator or raise a support ticket if you experience issues not listed above.
+  </div>
+
+  <!-- Footer -->
+  <div class="doc-footer">
+    <p>&copy; 2026 Adapt IT. All rights reserved.</p>
+    <p>Address Book Application &middot; End-User Manual &middot; Version 1.0</p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -14,6 +14,7 @@ Think of these as the toolbox you need before you can start building.
 | **Git** | Tracks changes to your code (like "undo history" on steroids) | A time machine for your project |
 | **GitHub CLI (gh)** | Lets you talk to GitHub from your terminal | A shortcut to GitHub without opening a browser |
 | **Claude Code CLI** | The AI assistant that helps you write code | Your AI pair programmer |
+| **Dev-ITS Workflow** | A Claude Code skill that automates the full dev pipeline | Your AI project manager + developer in one |
 
 ---
 
@@ -200,7 +201,101 @@ The first time you run it, it will ask you to authenticate. Follow the prompts t
 
 ---
 
-## Step 6: Verify Everything Works Together
+## Step 6: Install the Dev-ITS Workflow Skill
+
+> This is a custom Claude Code skill that automates the full development pipeline — from picking up a ticket to opening a PR. It carries your work through 10 stages with 3 human gates where you approve before it continues.
+
+### What It Does
+
+The dev-its-workflow takes a GitHub issue and:
+1. Estimates complexity
+2. Writes a specification (you approve)
+3. Plans the implementation (you approve)
+4. Writes all the code + tests
+5. Runs adversarial review
+6. Opens a PR (you approve)
+7. Updates documentation
+
+You make 3 decisions. The AI does 10 stages of work.
+
+### Windows
+
+Your trainer will give you a file called **`dev-its-workflow.zip`**. To install it:
+
+1. Open **File Explorer** and navigate to where you saved the zip file (e.g. `C:\Downloads\`)
+2. **Right-click** the file → **Extract All...**
+3. When it asks "Where do you want to extract?", paste this path:
+   ```
+   C:\Users\<your-username>\.claude\skills\
+   ```
+   (Replace `<your-username>` with your actual Windows username — e.g. `C:\Users\Jane.Smith\.claude\skills\`)
+4. Click **Extract**
+
+If you prefer the command line (Git Bash):
+
+```bash
+unzip ~/Downloads/dev-its-workflow.zip -d ~/.claude/skills/
+```
+
+### Mac/Linux
+
+```bash
+unzip ~/Downloads/dev-its-workflow.zip -d ~/.claude/skills/
+```
+
+### Verify It's Installed
+
+The folder structure should look like this:
+
+```
+C:\Users\<you>\.claude\skills\dev-its-workflow\
+├── SKILL.md                    ← Main orchestration logic
+├── INSTALL.md                  ← Detailed install guide
+├── GETTING_STARTED_GUIDE.md    ← Full tutorial walkthrough
+├── config.schema.json          ← Config validation
+├── agents/                     ← 11 specialist AI agents
+├── references/                 ← Mapping rules
+├── scripts/                    ← Setup helpers
+└── templates/                  ← PR templates + example config
+```
+
+### First Run — The Config Wizard
+
+The first time you use it in a project, it will auto-detect your environment and ask a few questions:
+
+1. Navigate to your project folder
+2. Start Claude Code: `claude`
+3. Type: `dev-its-workflow`
+4. It will detect there's no config and start the setup wizard
+5. Answer the questions (reviewers, branch prefix, commit style)
+6. It writes `.dev-its/config.json` in your project — commit this so your team shares the same config
+
+### How to Use It
+
+Once installed, you trigger it inside Claude Code with any of these:
+
+```
+dev-its-workflow
+work this ticket #1
+pick up ticket #45
+start the pipeline
+```
+
+### When to Use It
+
+- Starting a new feature from a GitHub issue
+- Building something from scratch (like this address-book-app)
+- Any time you want structured, gate-controlled AI development
+
+### When NOT to Use It
+
+- Quick one-line fixes (just ask Claude directly)
+- Exploratory questions ("how does X work?")
+- Non-code tasks (documentation only, config changes)
+
+---
+
+## Step 7: Verify Everything Works Together
 
 Open a terminal and run all of these — they should all return version numbers:
 
@@ -213,6 +308,14 @@ code --version      # Should show 1.x+ (optional)
 claude --version    # Should show a version number
 ```
 
+To verify the dev-its-workflow skill is installed, start Claude Code and type:
+
+```
+What skills do you have available?
+```
+
+You should see `dev-its-workflow` in the list.
+
 If any of them say "command not found":
 1. Close your terminal
 2. Open a brand new terminal
@@ -221,7 +324,7 @@ If any of them say "command not found":
 
 ---
 
-## Step 7: Create a GitHub Account (if you don't have one)
+## Step 8: Create a GitHub Account (if you don't have one)
 
 1. Go to https://github.com/
 2. Click **Sign up**
